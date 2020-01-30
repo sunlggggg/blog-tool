@@ -3,13 +3,13 @@ const url = require('url');
 const util = require('util');
 const marked = require('marked');
 const fs = require('fs-extra');
-
+const base = '/var/www/blog/'
 http.createServer(function (req, res) {
     const path = req.url.substring(1);
     console.log(path);
-    if ('.md' === req.url.substring(req.url.length - 3) && fs.existsSync(path)) {
+    if ('.md' === req.url.substring(req.url.length - 3) && fs.existsSync(base + path)) {
         res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-        res.end(marked(fs.readFileSync(path).toString()) +
+        res.end(marked(fs.readFileSync(base + path).toString()) +
             `<style type="text/css">
             img {
                 max-width: 720px;
@@ -27,4 +27,4 @@ http.createServer(function (req, res) {
         res.end('404');
     }
 
-}).listen(3000);
+}).listen(4000);
