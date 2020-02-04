@@ -3,7 +3,7 @@
 const testFolder = './node_modules/';
 const fs = require('fs');
 
-function getFiles(dir, files_) {
+module.exports = function getFiles(dir, files_) {
   files_ = files_ || [];
   var files = fs.readdirSync(dir);
   for (var i in files){
@@ -16,4 +16,3 @@ function getFiles(dir, files_) {
   }
   return files_;
 }
-console.log(getFiles(testFolder))
