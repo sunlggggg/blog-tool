@@ -35,7 +35,7 @@ function getDate(e){
   .filter(e => e !== '' && Number.isInteger(Number(e))).reduce((a, b) => a + "/" + b);
 }
 http.createServer(function (req, res) {
-  if (req.url == '/list') {
+  if (req.url == '/') {
     generateHtml(req, res, () => {
       const dateMap = new Map();
       const mds = getFiles(base + '/post')
